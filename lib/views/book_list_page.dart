@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:book_appp/model/book_list_response.dart';
+import 'package:book_appp/views/detail_book_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -52,20 +53,29 @@ class _BookListPageState extends State<BookListPage> {
             : ListView.builder(
                 itemBuilder: (context, index) {
                   final currentBook = bookList!.books![index];
-                  return Row(
-                    children: [
-                      Image.network(
-                        currentBook.image!,
-                        height: 100,
-                      ),
-                      Column(
-                        children: [
-                          Text(currentBook.title!),
-                          Text(currentBook.subtitle!),
-                          Text(currentBook.price!)
-                        ],
-                      )
-                    ],
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => DetailBookPage(
+                          isbn: currentBook.isbn13!,
+                        ),
+                      ));
+                    },
+                    child: Row(
+                      children: [
+                        Image.network(
+                          currentBook.image!,
+                          height: 100,
+                        ),
+                        Column(
+                          children: [
+                            Text(currentBook.title!),
+                            Text(currentBook.subtitle!),
+                            Text(currentBook.price!)
+                          ],
+                        )
+                      ],
+                    ),
                   );
                 },
               ),
