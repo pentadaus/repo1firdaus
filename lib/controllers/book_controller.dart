@@ -2,10 +2,9 @@ import 'package:book_appp/model/book_detail_response.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:convert';
 import 'package:book_appp/model/book_list_response.dart';
-import 'package:book_appp/views/detail_book_page.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:http/http.dart' as http;
 
 class BookController extends ChangeNotifier {
