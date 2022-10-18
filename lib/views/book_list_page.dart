@@ -51,6 +51,7 @@ class _BookListPageState extends State<BookListPage> {
         child: bookList == null
             ? Center(child: CircularProgressIndicator())
             : ListView.builder(
+                itemCount: bookList!.books!.length,
                 itemBuilder: (context, index) {
                   final currentBook = bookList!.books![index];
                   return GestureDetector(
@@ -67,12 +68,21 @@ class _BookListPageState extends State<BookListPage> {
                           currentBook.image!,
                           height: 100,
                         ),
-                        Column(
-                          children: [
-                            Text(currentBook.title!),
-                            Text(currentBook.subtitle!),
-                            Text(currentBook.price!)
-                          ],
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 12.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(currentBook.title!),
+                                Text(currentBook.subtitle!),
+                                Align(
+                                    alignment: Alignment.topRight,
+                                    child: Text(currentBook.price!))
+                              ],
+                            ),
+                          ),
                         )
                       ],
                     ),
